@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+
+<style>
+#map {
+
+      width: 50%;
+      height:50%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+</style>
+
+<script>
+
+var url = 'https://raw.githubusercontent.com/goish135/GPro/master/traffic_light.json';
+// https://raw.githubusercontent.com/goish135/GPro/master/traffic_light.json
+// https://ruienyuski.github.io/git_test/itaiwan.json 
+  function initMap() {
+    //設定中心點座標
+    
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: {lat:24.143658, lng: 120.671827}
+    });
+    
+
+    callAjax(url);
+
+function callAjax(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.send(null);
+
+    xhr.onload = function() {
+   
+            var record = JSON.parse(xhr.responseText);
+            //wifiData = record.result.records;
+			console.log(record)
+            len = record.length;
+			console.log(len)
+
+    //跑迴圈依序將值塞入到 marker
+    for(i=0;i<len;i++){
+      var str ={};
+      var place = {};
+
+      place.lat = parseFloat(record[i]['lat']);
+      place.lng = parseFloat(record[i]['lon']);
+	  console.log(place.lat)
+	  console.log(place.lng)
+      str.map = map;
+	  //console.log(map)
+      //str.title= wifiData[i]['地點']
+	  //str.title="NTCU"
+	  //console.log(str.title)
+      str.position = place;
+	  console.log(str.position)
+      console.log(str);
+	  //console.log(wifiData[i]['lat']);
+	  console.log(url)
+      new google.maps.Marker(str);
+    }
+
+
+    };
+};
+
+   
+
+  
+  }
+</script>
+
+<html>
+<head>
+  <title>traffic signals Map</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+</head>
+<body>
+  <div id="map"></div>
+  
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU1TGpRMS2lZZ0vbTPtAJapWcsLVnN2MU&callback=initMap" async
+    defer></script>
+    
+</body>
+</html>
+
+
