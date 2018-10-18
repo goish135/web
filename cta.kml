@@ -58,8 +58,8 @@
       <LineString>
         <altitudeMode>relative</altitudeMode>
         <coordinates>
-120.66976,24.144038,0
-120.671269,24.145459,0
+120.66976,24.144038,0.0
+120.671269,24.145459,0.0
         </coordinates>
       </LineString>
     </Placemark>
@@ -70,8 +70,8 @@
       <LineString>
         <altitudeMode>relative</altitudeMode>
         <coordinates>
-120.672765,24.141326,0
-120.675079,24.14358,0
+120.672765,24.141326,0.0
+120.675079,24.14358,0.0
         </coordinates>
       </LineString>
     </Placemark>
@@ -82,8 +82,8 @@
       <LineString>
         <altitudeMode>relative</altitudeMode>
         <coordinates>
-120.669812,24.147858,0
-120.669795,24.146732,0
+120.669812,24.147858,0.0
+120.669795,24.146732,0.0
         </coordinates>
       </LineString>
     </Placemark>
@@ -94,8 +94,8 @@
       <LineString>
         <altitudeMode>relative</altitudeMode>
         <coordinates>
-120.665281,24.144318,0
-120.665279,24.143244,0
+120.665281,24.144318,0.0
+120.665279,24.143244,0.0
         </coordinates>
       </LineString>
     </Placemark>
