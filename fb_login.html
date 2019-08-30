@@ -24,7 +24,7 @@ html = "";
 
 // 登入 FB 且已加入會員
 if (response.status === 'connected') {
-html = "已登入 FB，並加入 WFU BLOG DEMO 應用程式<br/>";
+html = "已登入 FB，並加入 友廷等公車應用程式<br/>";
 
 FB.api('/me?fields=id,name,email', function(response) {
 console.log(response);
