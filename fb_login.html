@@ -30,6 +30,7 @@ FB.api('/me?fields=id,name,email', function(response) {
 console.log(response);
 html += "會員暱稱：" + response.name + "<br/>";
 html += "會員 email：" + response.email;
+html += "會員 uid :" + response.id;
 target.innerHTML = html;
 });
 }
