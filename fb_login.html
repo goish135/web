@@ -1,0 +1,63 @@
+<fb:login-button scope="public_profile,email" autologoutlink="true" onlogin="checkLoginState();"></fb:login-button>
+
+目前狀態：<span id="FB_STATUS_1"></span>
+
+<script>
+window.fbAsyncInit = function() {
+FB.init({
+appId: '2348929441865157', // 填入 FB APP ID
+cookie: true,
+xfbml: true,
+version: 'v3.2'
+});
+
+FB.getLoginStatus(function(response) {
+statusChangeCallback(response);
+});
+};
+
+// 處理各種登入身份
+function statusChangeCallback(response) {
+console.log(response);
+var target = document.getElementById("FB_STATUS_1"),
+html = "";
+
+// 登入 FB 且已加入會員
+if (response.status === 'connected') {
+html = "已登入 FB，並加入 WFU BLOG DEMO 應用程式<br/>";
+
+FB.api('/me?fields=id,name,email', function(response) {
+console.log(response);
+html += "會員暱稱：" + response.name + "<br/>";
+html += "會員 email：" + response.email;
+target.innerHTML = html;
+});
+}
+
+// 登入 FB, 未偵測到加入會員
+else if (response.status === "not_authorized") {
+target.innerHTML = "已登入 FB，但未加入 WFU BLOG DEMO 應用程式";
+}
+
+// 未登入 FB
+else {
+target.innerHTML = "未登入 FB";
+}
+}
+
+function checkLoginState() {
+FB.getLoginStatus(function(response) {
+statusChangeCallback(response);
+});
+}
+
+// 載入 FB SDK
+(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s);
+js.id = id;
+js.src = "https://connect.facebook.net/zh_TW/sdk.js";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
